@@ -96,12 +96,18 @@
 					<div class="PageTypeRadios">
 						<label for="pageTypeDashboard">Dashboard Page</label><input id="pageTypeDashboard" type="radio" name="PageType" checked="checked" value="dashboard">
 						<label for="pageTypeProfile">Profile Page</label><input id="pageTypeProfile" type="radio" name="PageType" value="profile">
+						<label for="pageTypeCustomUrl">Custom Url</label><input id="pageTypeCustomUrl" type="radio" name="PageType" value="CustomUrl">
+
 					</div>
 				</div>
 				<div class="mapNodePropertiesInput DestinationSelectSection">
 					<select id="destinationSelect" class="DestinationSelectionOption" name="destinationSelect">
 						<option value="Loading...">Loading...</option>
 					</select>
+				</div>
+				<div class="mapNodePropertiesInput CustomUrlSelector">
+					<label for="CustomUrlInputField">Custom Url</label>
+					<input id="CustomUrlInputField" type="text" name="customUrl" value="http://uptimesoftware.com">
 				</div>
 			</div>
 		</form>
