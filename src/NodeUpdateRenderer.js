@@ -392,7 +392,8 @@ NodeUpdateRenderer = function(syncDashboard, getEditNodePropertiesDialog, remove
 				}
 				showEditMapNodeSelectedUi(this);
 			} else {
-				window.top.location.href = d.pageToGoTo;
+				window.open( d.pageToGoTo, '_blank');
+
 			}
 			d3.event.stopPropagation();
 		}).call(drag).each(attachWobbler);
