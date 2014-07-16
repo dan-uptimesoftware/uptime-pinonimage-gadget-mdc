@@ -24,6 +24,9 @@ NewNodeDialog = function() {
 			var urls = getProfilePageUrls(systemInfo.type, systemInfo.id, systemInfo.name);
 			pageToGoTo = urls[pageToGoTo];
 		}
+		else if(pageType == "CustomUrl") {
+			pageToGoTo = $("#CustomUrlInputField").val();
+		}
 		return pageToGoTo;
 	};
 
@@ -90,6 +93,10 @@ NewNodeDialog = function() {
 			populatePageSelection(radio).then(function() {
 				$("#destinationSelect").val(nodeSettings.pageToGoTo);
 			});
+		}
+		else if (nodeSettings.pageType == "CustomUrl")
+		{
+			$("#CustomUrlInputField").val(nodeSettings.pageToGoTo);
 		} else {
 			var radio = $("#pageTypeProfile");
 			radio.prop("checked", true);
@@ -205,10 +212,17 @@ NewNodeDialog = function() {
 	};
 
 	var populatePageSelection = function(radioSelected) {
+		$(".CustomUrlSelector").hide();
+		$(".DestinationSelectSection").hide();
+
+
 		$(".DestinationSelectionOption").empty().append($("<option />").val(-1).text("Loading...")).prop('disabled', true);
 		var pageTypeRadio = $("input[name=PageType]");
 		pageTypeRadio.prop('disabled', true);
 		if (radioSelected.val() == "profile") {
+			$(".DestinationSelectSection").show();
+			
+
 			return UPTIME.pub.gadgets.promises.Promise(function(resolve, reject) {
 				populateProfileDestination();
 				$(".DestinationSelectionOption").prop('disabled', false);
@@ -216,10 +230,18 @@ NewNodeDialog = function() {
 				resolve();
 			});
 		}
-		return uptimeGadget.listDashboards().then(populateDashboardUrls).then(function() {
-			$(".DestinationSelectionOption").prop('disabled', false);
+		if (radioSelected.val() == "dashboard") {
+			$(".DestinationSelectSection").show();
+
+			return uptimeGadget.listDashboards().then(populateDashboardUrls).then(function() {
+				$(".DestinationSelectionOption").prop('disabled', false);
+				pageTypeRadio.prop('disabled', false);
+			});
+		}
+		if (radioSelected.val() == "CustomUrl") {
+			$(".CustomUrlSelector").show();
 			pageTypeRadio.prop('disabled', false);
-		});
+		}
 	};
 
 	this.onChangePageType = function() {
