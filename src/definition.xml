@@ -106,7 +106,7 @@
 					</select>
 				</div>
 				<div class="mapNodePropertiesInput CustomUrlSelector">
-					<label for="CustomUrlInputField">Custom Url</label>
+					<label for="CustomUrlInputField">Url</label>
 					<input id="CustomUrlInputField" type="text" name="customUrl" value="http://uptimesoftware.com">
 				</div>
 			</div>

@@ -24,6 +24,9 @@ NewNodeDialog = function() {
 			var urls = getProfilePageUrls(systemInfo.type, systemInfo.id, systemInfo.name);
 			pageToGoTo = urls[pageToGoTo];
 		}
+		else if(pageType == "CustomUrl") {
+			pageToGoTo = $("#CustomUrlInputField").val();
+		}
 		return pageToGoTo;
 	};
 
@@ -90,6 +93,10 @@ NewNodeDialog = function() {
 			populatePageSelection(radio).then(function() {
 				$("#destinationSelect").val(nodeSettings.pageToGoTo);
 			});
+		}
+		else if (nodeSettings.pageType == "CustomUrl")
+		{
+			$("#CustomUrlInputField").val(nodeSettings.pageToGoTo);
 		} else {
 			var radio = $("#pageTypeProfile");
 			radio.prop("checked", true);
