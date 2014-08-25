@@ -368,7 +368,7 @@ NodeUpdateRenderer = function(syncDashboard, getEditNodePropertiesDialog, remove
 			return d.xRatio + "%";
 		}).attr("cy", function(d) {
 			return d.yRatio + "%";
-		}).attr("r", "15px").attr("stroke", function(d) {
+		}).attr("r", "5px").attr("stroke", function(d) {
 			return getColour("UNKNOWN");
 		}).attr("stroke-width", 8).attr("fill", function(d) {
 			return getColour("UNKNOWN");
