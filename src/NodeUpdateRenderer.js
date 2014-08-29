@@ -370,7 +370,7 @@ NodeUpdateRenderer = function(syncDashboard, getEditNodePropertiesDialog, remove
 			return d.yRatio + "%";
 		}).attr("r", "5px").attr("stroke", function(d) {
 			return getColour("UNKNOWN");
-		}).attr("stroke-width", 8).attr("fill", function(d) {
+		}).attr("stroke-width", 4).attr("fill", function(d) {
 			return getColour("UNKNOWN");
 		}).on("mouseover", function(d) {
 			if ($('#wholeBoard').hasClass("editOn")) {
